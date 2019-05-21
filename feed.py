@@ -66,6 +66,13 @@ def addUser():
 	if (val == "1"):
 		tfeed.saveUserID(search)
 
+def deleteUser():
+	search = raw_input("Who would you like to delete\n")
+	print("1. Twitter")
+	val = raw_input("Choose an option: ")
+	if (val == "1"):
+		tfeed.deleteAllUserData(search)
+
 def viewFollowing():
 	f = open("following.txt", "r")
 	fr = f.readlines()
@@ -87,7 +94,7 @@ def viewFeed():
 			print(fr[count+1].replace("\n","") + " on Twitter")
 			print(fr[count+2].replace("\n",""))
 			print(fr[count+3]) #want the extra newline
-		
+
 
 
 def resetAll():
@@ -109,11 +116,12 @@ while(True):
 	print("1. View your feed")
 	print("2. Search for a user")
 	print("3. Add a user to feed")
-	print("4. View follow list")
-	print("5. Reset All")
+	print("4. Delete a user from feed")
+	print("5. View follow list")
+	print("6. Manual refresh")
+	print("7. Reset All")
 	print("0. To Quit")
 	val = raw_input("Choose an option: ")
-
 	if (val == "1"):
 		viewFeed()
 	elif (val == "2"):
@@ -121,8 +129,12 @@ while(True):
 	elif (val == "3"):
 		addUser()
 	elif (val == "4"):
-		viewFollowing()
+		deleteUser()
 	elif (val == "5"):
+		viewFollowing()
+	elif (val == "6"):
+		refresh()
+	elif (val == "7"):
 		resetAll()
 	elif (val == "0"):
 		break
